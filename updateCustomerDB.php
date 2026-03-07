@@ -57,9 +57,9 @@ $cc = $stmt_c->fetchAll();
                         foreach ($cc as $c) {
                             if ($selected == $c['CountryName']) {
 
-                                echo '<option selected value="' . ___________  . '">' .  $result_customer["CountryName"] . '</option>';
+                                echo '<option selected value="' . $c["CountryCode"]  . '">' .  $result_customer["CountryName"] . '</option>';
                             } else {
-                                echo '<option value="' . ____________ . '">' .  $c["CountryName"] . '</option>';
+                                echo '<option value="' . $c["CountryCode"] . '">' .  $c["CountryName"] . '</option>';
                             }
                         }
                         ?>

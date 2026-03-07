@@ -29,9 +29,13 @@
                         <?php
                         //https://pad.riseup.net/p/np-db-keep
                         require "connect.php";
-                        $sql = "select * from customer where :CustomerID, :";
+                        $sql = "SELECT customer.*, country.CountryName 
+                            FROM customer 
+                            JOIN country ON customer.CountryCode = country.CountryCode";
                         $stmt = $conn->prepare($sql);
                         $stmt->execute();
+
+                        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         foreach ($result as $r) { ?>
                             <tr>
