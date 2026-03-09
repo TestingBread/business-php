@@ -10,6 +10,10 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 180a3ea (small patch)
     <div class="container">
         <div class="row">
             <div class="col-md-12"> <br>
@@ -19,13 +23,21 @@
                         <tr>
                             <th width="10%">รหัสลูกค้า</th>
                             <th width="20%">ชื่อ-นามสกุล</th>
+<<<<<<< HEAD
 
+=======
+                            <th width="20%">วันเกิด</th>
+                            <th width="20%">email</th>
+                            <th width="20%">CountryCode</th>
+                            <th width="20%">OutstandingDebt</th>
+>>>>>>> 180a3ea (small patch)
                             <th width="5%">แก้ไข</th>
                             <th width="5%">ลบ</th>
                         </tr>
                     </thead>
 
                     <tbody>
+<<<<<<< HEAD
                         <?php
                         //https://pad.riseup.net/p/np-db-keep
                         require "connect.php";
@@ -44,6 +56,28 @@
                                 <td><?= $r['CountryName'] ?></td>
                                 <td><?= $r['OutstandingDebt'] ?></td>
                                 <td><a href="updateCustomerForm.php?CustomerID=<?= $r['CustomerID']; ?>" class="btn btn-warning btn-sm">แก้ไข</a></td>
+=======
+                        <?php 
+                        require 'connect.php';
+                            
+                        //https://pad.riseup.net/p/np-db-keep
+ 
+                        $sql = "SELECT `CustomerID`, `Name`, `Birthdate`, `Email`, country.CountryName , `OutstandingDebt` FROM `customer` , country WHERE customer.CountryCode = country.CountryCode";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
+                        $result = $stmt->fetchAll();
+
+  
+                        foreach ($result as $r) { ?>
+                            <tr>
+                                <td><?= $r['CustomerID'] ?></td>
+                                <td><?= $r['Name'] ?></td>
+                                <td><?= $r['Birthdate'] ?></td>
+                                <td><?= $r['Email'] ?></td>
+                                <td><?= $r['CountryName'] ?></td>
+                                <td><?= $r['OutstandingDebt'] ?></td>
+                                <td><a href="updateCustomerForm.php?CustomerID=<?=$r['CustomerID'] ?>" class="btn btn-warning btn-sm">แก้ไข</a></td>
+>>>>>>> 180a3ea (small patch)
                                 <td><a href="deleteCustomer.php?CustomerID=<?= $r['CustomerID'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('ยืนยันการลบข้อมูล !!');">ลบ</a></td>
                             </tr>
                         <?php

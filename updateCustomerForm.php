@@ -1,6 +1,5 @@
 <?php
 require "connect.php";
-<<<<<<< HEAD
 $sql_c = "SELECT *
     FROM customer,country
     WHERE customer.countrycode = country.countrycode
@@ -30,9 +29,8 @@ $cc = $stmt_c->fetchAll();
 
 
 <body>
-    <h2>แก้ไขมูลลูกค้าเข้าฐานข้อมูล1<h2>
+    <h2>แก้ไขมูลลูกค้าเข้าฐานข้อมูล1</h2>
             <form action="updateCustomerDB.php" method="POST">
-                <form>
                     <label>รหัสลูกค้า: </label>
                     <input type="text" placeholder="กรุณากรอกรหัสลูกค้า" name="CustomerID" value="<?php echo $result_customer['CustomerID'] ?>">
                     <br> <br>
@@ -69,66 +67,7 @@ $cc = $stmt_c->fetchAll();
                     </select>
                     <br> <br>
                     <input type="submit">
-                </form>
+            </form>
 </body>
 
 </html>
-=======
-if (isset($_POST['CustomerID'])) {
-
-
-    $CustomerID = $_POST['CustomerID'];
-    $Name = $_POST['Name'];
-    $Birthdate = $_POST['Birthdate'];
-    $Email = $_POST['Email'];
-    $CountryName = $_POST['CountryName'];
-    $OutstandingDebt = $_POST['OutstandingDebt'];
-
-
-
-    // echo 'CustomerID = ' . $CustomerID;
-    // echo 'Name = ' . $Name;
-    // echo 'Email = ' . $Email;
-
-
-    $stmt = $conn->prepare(
-        "UPDATE `customer` SET `Name`=':Name',`Birthdate`=':Birthdate',`Email`=':Email',`CountryCode`=':CountryName',`OutstandingDebt`=':OutstandingDebt' 
-        WHERE CustomerID = :CustomerID"
-    );
-    $stmt->bindparam(':CustomerID',);
-    $stmt->bindparam(':Name',);
-    $stmt->bindparam(':Birthdate',);
-    $stmt->bindparam(':Email',);
-    $stmt->bindparam(':CountryName',);
-    $stmt->bindparam(':OutstandingDebt',);
-
-    $stmt->execute();
-
-    echo '
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
-
-    if ($stmt->rowCount() >= 0) {
-        echo '
-        <script type="text/javascript">
-        
-        $(document).ready(function(){
-        
-            swal({
-                title: "Success!",
-                text: "Successfuly update customer information",
-                type: "success",
-                timer: 2500,
-                showConfirmButton: false
-              }, function(){
-                    window.location.href = "index.php";
-              });
-        });
-        
-        </script>
-        ';
-    }
-    $conn = null;
-}
->>>>>>> 180a3ea (small patch)
